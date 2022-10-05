@@ -1,14 +1,42 @@
-const dbConnection = require("./config/db.config.js");
+const studentModel = require("../models/student.models.js");
 
 // Get all students
-const getAllStudent = async (req, res) => {
-  const query = "SELECT * FROM STUDENTS";
+const getAll = async (req, res) => {
+  studentModel
+    .getAll(req)
+    .then((results) => {
+      res.status(200).json({
+        status: 0,
+        data: results,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        data: null,
+        status: -1,
+      });
+    });
 };
 
-// Get Student by ID
-const getStudentByID = async (req, res) => {};
+// Get by id
+const getByID = async (req, res) => {
+  studentModel
+    .getByID(req)
+    .then((results) => {
+      res.status(200).json({
+        status: 0,
+        data: results,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        data: null,
+        status: -1,
+      });
+    });
+};
 
 module.exports = {
-  getAllStudent,
-  getStudentByID,
+  getAll,
+  getByID,
 };

@@ -2,19 +2,20 @@
 -- SINH VIEN
 DROP TABLE IF EXISTS SINHVIEN;
 CREATE TABLE SINHVIEN (
-    MaSV            INT,
+    MaSV            INT NOT NULL,
     Hoten           VARCHAR(255),
     Ngaysinh        DATE,
     Gioitinh        VARCHAR(255),
     MaThietbi       VARCHAR(255),
     MaFCM           VARCHAR(255),
+    Matkhau         VARCHAR(255),
     PRIMARY KEY(MaSV)
 );
 
 -- KHOA
 DROP TABLE IF EXISTS KHOA;
 CREATE TABLE KHOA (
-    MaKhoa          INT,
+    MaKhoa          INT NOT NULL,
     TenKhoa         VARCHAR(255),
     PRIMARY KEY(MaKhoa) 
 );
@@ -22,7 +23,7 @@ CREATE TABLE KHOA (
 -- PHONGHOC
 DROP TABLE IF EXISTS PHONGHOC;
 CREATE TABLE PHONGHOC (
-    MaPH            INT,
+    MaPH            INT NOT NULL,
     TenPH           VARCHAR(255),
     Diachi          VARCHAR(255),
     PRIMARY KEY(MaPH) 
@@ -31,7 +32,7 @@ CREATE TABLE PHONGHOC (
 -- CAHOC
 DROP TABLE IF EXISTS CAHOC;
 CREATE TABLE CAHOC (
-    MaCH            INT,
+    MaCH            INT NOT NULL,
     GioBatdau       VARCHAR(255),
     GioKetthuc      VARCHAR(255),
     PRIMARY KEY(MaCH) 
@@ -40,8 +41,8 @@ CREATE TABLE CAHOC (
 -- GIANGVIEN
 DROP TABLE IF EXISTS GIANGVIEN;
 CREATE TABLE GIANGVIEN (
-    MaGV            INT,
-    MaKhoa          INT,
+    MaGV            INT NOT NULL,
+    MaKhoa          INT NOT NULL,
     Hoten           VARCHAR(255),
     Ngaysinh        DATE,
     Gioitinh        VARCHAR(255),
@@ -54,7 +55,7 @@ CREATE TABLE GIANGVIEN (
 -- MONHOC
 DROP TABLE IF EXISTS MONHOC;
 CREATE TABLE MONHOC (
-    MaMH            INT,
+    MaMH            INT NOT NULL,
     TenMonhoc       VARCHAR(255),
     Tongsotiet      INT,
     Tietlythuyet    INT,
@@ -65,9 +66,10 @@ CREATE TABLE MONHOC (
 -- LOPMONHOC
 DROP TABLE IF EXISTS LOPMONHOC;
 CREATE TABLE LOPMONHOC (
-    MaLopMonhoc     INT,
-    MaGV            INT,
+    MaLopMonhoc     INT NOT NULL,
+    MaGV            INT NOT NULL,
     TenLopmonhoc    VARCHAR(255),
+    Matkhau         VARCHAR(255),
     PRIMARY KEY(MaLopMonhoc),
     FOREIGN KEY (MaGV) REFERENCES GIANGVIEN(MaGV)
 );
@@ -76,8 +78,8 @@ CREATE TABLE LOPMONHOC (
 -- GV_DIEMDANH_SV
 DROP TABLE IF EXISTS GV_DIEMDANH_SV;
 CREATE TABLE GV_DIEMDANH_SV (
-    MaDiemDanh      INT,
-    MaGV            INT,
+    MaDiemDanh      INT NOT NULL,
+    MaGV            INT NOT NULL,
     MaLopMonhoc     INT,
     Ngaydiemdanh    Date,
     Thoidiembatdau  Date,
@@ -89,8 +91,8 @@ CREATE TABLE GV_DIEMDANH_SV (
 -- MONHOC_LOPMONHOC
 DROP TABLE IF EXISTS MONHOC_LOPMONHOC;
 CREATE TABLE MONHOC_LOPMONHOC (
-    MaLopMonhoc     INT,
-    MaMH            INT,
+    MaLopMonhoc     INT NOT NULL,
+    MaMH            INT NOT NULL,
     Namhoc          VARCHAR(255),
     Hocky           VARCHAR(255),
     FOREIGN KEY (MaLopMonhoc) REFERENCES LOPMONHOC(MaLopMonhoc),
@@ -100,9 +102,9 @@ CREATE TABLE MONHOC_LOPMONHOC (
 -- CA_PHONG_LOPMONHOC
 DROP TABLE IF EXISTS CA_PHONG_LOPMONHOC;
 CREATE TABLE CA_PHONG_LOPMONHOC (
-    MaCH            INT,
-    MaPH            INT,
-    MaLopMonhoc     INT,
+    MaCH            INT NOT NULL,
+    MaPH            INT NOT NULL,
+    MaLopMonhoc     INT NOT NULL,
     Thu             VARCHAR(255),
     FOREIGN KEY (MaCH) REFERENCES CAHOC(MaCH),
     FOREIGN KEY (MaPH) REFERENCES PHONGHOC(MaPH),
@@ -112,8 +114,8 @@ CREATE TABLE CA_PHONG_LOPMONHOC (
 -- CHITIETDD
 DROP TABLE IF EXISTS CHITIETDD;
 CREATE TABLE CHITIETDD (
-    MaDiemDanh      INT,
-    MaSV            INT,
+    MaDiemDanh      INT NOT NULL,
+    MaSV            INT NOT NULL,
     Thoigiandiemdanh VARCHAR(255),
     Lydo            VARCHAR(255),
     FOREIGN KEY (MaDiemDanh) REFERENCES GV_DIEMDANH_SV(MaDiemDanh),
@@ -123,8 +125,8 @@ CREATE TABLE CHITIETDD (
 -- SINHVIEN_HOC_LOPMONHOC
 DROP TABLE IF EXISTS SINHVIEN_HOC_LOPMONHOC;
 CREATE TABLE SINHVIEN_HOC_LOPMONHOC (
-    MaLopMonhoc     INT,
-    MaSV            INT,
+    MaLopMonhoc     INT NOT NULL,
+    MaSV            INT NOT NULL,
     Kichhoat        BOOLEAN,
     FOREIGN KEY (MaLopMonhoc) REFERENCES LOPMONHOC(MaLopMonhoc),
     FOREIGN KEY (MaSV) REFERENCES SINHVIEN(MaSV)

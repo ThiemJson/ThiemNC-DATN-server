@@ -3,10 +3,11 @@ const dotenv = require("dotenv");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const { SERVER_PORT } = require("../variables/constant.js");
+const { SERVER_PORT } = require("../variables/constant");
 
 const app = express();
-const dbConnection = require("./config/db.config.js");
+const dbConnection = require("./config/db.config");
+const initAppAPI = require("./routes/app.routes");
 
 /// Config `dotENV`
 dotenv.config();
@@ -20,6 +21,9 @@ app.use(
 app.use(bodyParser.json());
 app.use(express.json());
 app.use(cors());
+
+// Init app api
+initAppAPI(app);
 
 // Connection to Database
 dbConnection.connect((err) => {
