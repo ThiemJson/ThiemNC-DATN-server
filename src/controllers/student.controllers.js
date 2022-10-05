@@ -1,7 +1,7 @@
 const studentModel = require("../models/student.models.js");
 
 // Get all students
-const getAll = async (req, res) => {
+const fetchAll = async (req, res) => {
   studentModel
     .getAll(req)
     .then((results) => {
@@ -19,7 +19,7 @@ const getAll = async (req, res) => {
 };
 
 // Get by id
-const getByID = async (req, res) => {
+const fetchById = async (req, res) => {
   studentModel
     .getByID(req)
     .then((results) => {
@@ -36,7 +36,20 @@ const getByID = async (req, res) => {
     });
 };
 
+const create = async (req, res) => {
+  res.status(200).json({
+    message: true,
+  });
+};
+
+const update = async (req, res) => {};
+
+const remove = async (req, res) => {};
+
 module.exports = {
-  getAll,
-  getByID,
+  fetchAll,
+  fetchById,
+  create,
+  update,
+  remove,
 };

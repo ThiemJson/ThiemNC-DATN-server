@@ -27,7 +27,52 @@ const getByID = (req) => {
   });
 };
 
+const create = (req) => {
+  return new Promise((resolve, reject) => {
+    const id = req.params.id;
+    if (!id) reject(null);
+    const query = `INSERT INTO ${TABLE_SV}` + ` VALUES (); `;
+    dbConnection.query(query, (error, results) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(results);
+    });
+  });
+};
+
+const update = (req) => {
+  // return new Promise((resolve, reject) => {
+  //   const id = req.params.id;
+  //   if (!id) reject(null);
+  //   const query = `INSERT INTO ${TABLE_SV}` + ` VALUES (); `;
+  //   dbConnection.query(query, (error, results) => {
+  //     if (error) {
+  //       reject(error);
+  //     }
+  //     resolve(results);
+  //   });
+  // });
+};
+
+const remove = (req) => {
+  // return new Promise((resolve, reject) => {
+  //   const id = req.params.id;
+  //   if (!id) reject(null);
+  //   const query = `INSERT INTO ${TABLE_SV}` + ` VALUES (); `;
+  //   dbConnection.query(query, (error, results) => {
+  //     if (error) {
+  //       reject(error);
+  //     }
+  //     resolve(results);
+  //   });
+  // });
+};
+
 module.exports = {
   getAll,
   getByID,
+  create,
+  update,
+  remove,
 };
