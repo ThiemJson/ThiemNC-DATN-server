@@ -37,14 +37,55 @@ const fetchById = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  res.status(200).json({
-    message: true,
-  });
+  studentModel
+    .create(req)
+    .then((results) => {
+      res.status(200).json({
+        status: 0,
+        data: results,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: -1,
+        data: null,
+      });
+    });
 };
 
-const update = async (req, res) => {};
+const update = async (req, res) => {
+  studentModel
+    .update(req)
+    .then((results) => {
+      res.status(200).json({
+        status: 0,
+        data: results,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: -1,
+        data: null,
+      });
+    });
+};
 
-const remove = async (req, res) => {};
+const remove = async (req, res) => {
+  studentModel
+    .remove(req)
+    .then((results) => {
+      res.status(200).json({
+        status: 0,
+        data: results,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: -1,
+        data: null,
+      });
+    });
+};
 
 module.exports = {
   fetchAll,

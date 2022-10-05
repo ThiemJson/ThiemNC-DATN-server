@@ -29,9 +29,18 @@ const getByID = (req) => {
 
 const create = (req) => {
   return new Promise((resolve, reject) => {
-    const id = req.params.id;
-    if (!id) reject(null);
-    const query = `INSERT INTO ${TABLE_SV}` + ` VALUES (); `;
+    const {
+      student_id,
+      name,
+      date_of_birth,
+      gender,
+      device_id,
+      fcm_id,
+      password,
+    } = req.body;
+    const query =
+      `INSERT INTO ${TABLE_SV} (MaSV, Hoten, Ngaysinh, Gioitinh, MaThietbi, MaFCM, Matkhau) ` +
+      ` VALUES ('${student_id}','${name}','${date_of_birth}','${gender}','${device_id}', '${fcm_id}', '${password}');`;
     dbConnection.query(query, (error, results) => {
       if (error) {
         reject(error);
@@ -42,31 +51,49 @@ const create = (req) => {
 };
 
 const update = (req) => {
-  // return new Promise((resolve, reject) => {
-  //   const id = req.params.id;
-  //   if (!id) reject(null);
-  //   const query = `INSERT INTO ${TABLE_SV}` + ` VALUES (); `;
-  //   dbConnection.query(query, (error, results) => {
-  //     if (error) {
-  //       reject(error);
-  //     }
-  //     resolve(results);
-  //   });
-  // });
+  const {
+    id,
+    student_id,
+    name,
+    date_of_birth,
+    gender,
+    device_id,
+    fcm_id,
+    password,
+  } = req.body;
+  return new Promise((resolve, reject) => {
+    if (!id) reject(null);
+    const query =
+      `UPDATE ${TABLE_SV} ` +
+      ` SET MaSV = '${student_id}', ` +
+      ` Hoten = '${name}',` +
+      ` Ngaysinh = '${date_of_birth}',` +
+      ` Gioitinh = '${gender}',` +
+      ` MaThietbi = '${device_id}',` +
+      ` MaFCM = '${fcm_id}',` +
+      ` Matkhau = '${password}'` +
+      ` WHERE ID = ${id};`;
+    dbConnection.query(query, (error, results) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(results);
+    });
+  });
 };
 
 const remove = (req) => {
-  // return new Promise((resolve, reject) => {
-  //   const id = req.params.id;
-  //   if (!id) reject(null);
-  //   const query = `INSERT INTO ${TABLE_SV}` + ` VALUES (); `;
-  //   dbConnection.query(query, (error, results) => {
-  //     if (error) {
-  //       reject(error);
-  //     }
-  //     resolve(results);
-  //   });
-  // });
+  return new Promise((resolve, reject) => {
+    const id = req.body.id;
+    if (!id) reject(null);
+    const query = `DELETE FROM ${TABLE_SV} WHERE ID=${id};`;
+    dbConnection.query(query, (error, results) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(results);
+    });
+  });
 };
 
 module.exports = {

@@ -4,7 +4,7 @@ const studentsController = require("../controllers/student.controllers");
 
 studentRoutes.get("/", studentsController.fetchAll);
 studentRoutes.get("/:id", studentsController.fetchById);
-studentRoutes.delete("/:id", studentsController.remove);
+studentRoutes.delete("/", studentsController.remove);
 studentRoutes.post("/", studentsController.create);
 studentRoutes.put("/", studentsController.update);
 
