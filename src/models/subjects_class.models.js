@@ -49,7 +49,7 @@ const update = (req) => {
     if (!id) reject(null);
     const query =
       `UPDATE ${TABLE_MONHOC_LOPMONHOC} ` +
-      ` SET IDMonhoc = '${subject_id}', ` +
+      ` SET IDMonhoc = ${subject_id}, ` +
       ` IDLopmonhoc = ${class_id},` +
       ` Namhoc = ${year},` +
       ` Hocky = ${semesters},` +

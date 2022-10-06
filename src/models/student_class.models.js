@@ -30,10 +30,10 @@ const getByID = (req) => {
 
 const create = (req) => {
   return new Promise((resolve, reject) => {
-    const { subject_id, student_id, is_active } = req.body;
+    const { class_id, student_id, is_active } = req.body;
     const query =
       `INSERT INTO ${TABLE_SINHVIEN_HOC_LOPMONHOC} (IDLopmonhoc, IDSinhvien, Kichhoat) ` +
-      ` VALUES ('${subject_id}',${student_id},${is_active});`;
+      ` VALUES (${class_id},${student_id},${is_active});`;
     dbConnection.query(query, (error, results) => {
       if (error) {
         reject(error);
@@ -44,12 +44,12 @@ const create = (req) => {
 };
 
 const update = (req) => {
-  const { id, subject_id, student_id, is_active } = req.body;
+  const { id, class_id, student_id, is_active } = req.body;
   return new Promise((resolve, reject) => {
     if (!id) reject(null);
     const query =
       `UPDATE ${TABLE_SINHVIEN_HOC_LOPMONHOC} ` +
-      ` SET IDLopmonhoc = '${subject_id}', ` +
+      ` SET IDLopmonhoc = ${class_id}, ` +
       ` IDSinhvien = ${student_id},` +
       ` Kichhoat = ${is_active},` +
       ` WHERE ID = ${id};`;
