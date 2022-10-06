@@ -17,7 +17,7 @@ const getByID = (req) => {
   return new Promise((resolve, reject) => {
     const id = req.params.id;
     if (!id) reject(null);
-    const query = `SELECT * ` + ` FROM ${TABLE_SV} ` + `WHERE MaSV=${id}`;
+    const query = `SELECT * ` + ` FROM ${TABLE_SV} ` + `WHERE ID=${id}`;
     dbConnection.query(query, (error, results) => {
       if (error) {
         reject(error);

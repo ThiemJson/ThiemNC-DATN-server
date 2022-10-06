@@ -8,11 +8,11 @@ const {
 } = require("../../variables/db");
 
 const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  port: 3306,
-  database: "beexpress",
+  host: MYSQL_HOST,
+  user: MYSQL_USER_NAME,
+  password: MYSQL_PASSWORD,
+  port: MYSQL_PORT,
+  database: MYSQL_DATABASE_NAME,
 });
 
 module.exports = connection;

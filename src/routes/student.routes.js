@@ -2,10 +2,10 @@ const express = require("express");
 const studentRoutes = express.Router();
 const studentsController = require("../controllers/student.controllers");
 
-studentRoutes.get("/", studentsController.fetchAll);
-studentRoutes.get("/:id", studentsController.fetchById);
-studentRoutes.delete("/", studentsController.remove);
-studentRoutes.post("/", studentsController.create);
-studentRoutes.put("/", studentsController.update);
+studentRoutes.get("/students/", studentsController.fetchAll);
+studentRoutes.get("/students/:id", studentsController.fetchById);
+studentRoutes.delete("/students/", studentsController.remove);
+studentRoutes.post("/students/", studentsController.create);
+studentRoutes.put("/students/", studentsController.update);
 
 module.exports = studentRoutes;

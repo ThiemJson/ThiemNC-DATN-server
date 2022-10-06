@@ -3,7 +3,7 @@ module.exports = {
   MYSQL_USER_NAME: process.env.MYSQL_USER_NAME || "root",
   MYSQL_PASSWORD: process.env.MYSQL_PASSWORD || "password",
   MYSQL_PORT: process.env.MYSQL_PORT || 3306,
-  MYSQL_DATABASE_NAME: process.env.MYSQL_DATABASE_NAME || "BE_SERVER",
+  MYSQL_DATABASE_NAME: process.env.MYSQL_DATABASE_NAME || "be_express",
 
   // DATABASE ENTITY
   TABLE_SV: "SINHVIEN", //
