@@ -10,6 +10,7 @@ const subject_classRoutes = require("../routes/subjects_class.routes");
 const detail_attendanceRoutes = require("../routes/detail_attendance.routes");
 const lecture_attendance_studentRoutes = require("../routes/lecture_attendance_student.routes");
 const lession_room_subjectModel = require("../routes/lession_room_subject.routes");
+const notificationModel = require("../routes/notification.routes");
 
 const initAppAPI = (app) => {
   app.use("/api/v1", studentRoutes);
@@ -24,6 +25,7 @@ const initAppAPI = (app) => {
   app.use("/api/v1", lecture_attendance_studentRoutes);
   app.use("/api/v1", lession_room_subjectModel);
   app.use("/api/v1", subject_classRoutes);
+  app.use("/api/v1", notificationModel);
 };
 
 module.exports = initAppAPI;
