@@ -53,6 +53,7 @@ CREATE TABLE GIANGVIEN (
     Gioitinh        VARCHAR(255),
     MaThietbi       VARCHAR(255) UNIQUE,
     MaFCM           VARCHAR(255) UNIQUE,
+    Matkhau         VARCHAR(255),
     PRIMARY KEY(ID),
     FOREIGN KEY (IDKhoa) REFERENCES KHOA(ID)
 );
