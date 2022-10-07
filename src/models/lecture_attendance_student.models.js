@@ -30,11 +30,10 @@ const getByID = (req) => {
 
 const create = (req) => {
   return new Promise((resolve, reject) => {
-    const { attendance_id, lecture_id, class_id, attendance_day, start_time } =
-      req.body;
+    const { lecture_id, class_id, attendance_day, start_time } = req.body;
     const query =
-      `INSERT INTO ${TABLE_GV_DIEMDANH_SV} (MaDiemDanh, IDGiangvien, IDLopmonhoc, Ngaydiemdanh, Thoidiembatdau) ` +
-      ` VALUES ('${attendance_id}',${lecture_id},${class_id},'${attendance_day}','${start_time}');`;
+      `INSERT INTO ${TABLE_GV_DIEMDANH_SV} (IDGiangvien, IDLopmonhoc, Ngaydiemdanh, Thoidiembatdau) ` +
+      ` VALUES (${lecture_id},${class_id},'${attendance_day}','${start_time}');`;
     dbConnection.query(query, (error, results) => {
       if (error) {
         reject(error);
@@ -45,20 +44,12 @@ const create = (req) => {
 };
 
 const update = (req) => {
-  const {
-    id,
-    attendance_id,
-    lecture_id,
-    class_id,
-    attendance_day,
-    start_time,
-  } = req.body;
+  const { id, lecture_id, class_id, attendance_day, start_time } = req.body;
   return new Promise((resolve, reject) => {
     if (!id) reject(null);
     const query =
       `UPDATE ${TABLE_GV_DIEMDANH_SV} ` +
-      ` SET MaDiemDanh = '${attendance_id}', ` +
-      ` IDGiangvien = ${lecture_id},` +
+      ` SET IDGiangvien = ${lecture_id},` +
       ` IDLopmonhoc = ${class_id},` +
       ` Ngaydiemdanh = '${attendance_day}',` +
       ` Thoidiembatdau = '${start_time}',` +

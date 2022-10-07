@@ -1,6 +1,6 @@
 const express = require("express");
 const classRoutes = express.Router();
-const classController = require("../controllers/lession.controllers");
+const classController = require("../controllers/class.controllers");
 
 classRoutes.get("/class/", classController.fetchAll);
 classRoutes.get("/class/:id", classController.fetchById);

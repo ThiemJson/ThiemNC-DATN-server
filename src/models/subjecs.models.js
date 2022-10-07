@@ -29,11 +29,10 @@ const getByID = (req) => {
 
 const create = (req) => {
   return new Promise((resolve, reject) => {
-    const { subject_id, name, lession_count, theory_count, practics_count } =
-      req.body;
+    const { subject_id, name, lession_count, semesters } = req.body;
     const query =
-      `INSERT INTO ${TABLE_MONHOC} (MaMH, TenMonhoc, Tongsotiet, Tietlythuyet, Tietthuchanh) ` +
-      ` VALUES ('${subject_id}','${name}',${lession_count},${theory_count},${practics_count});`;
+      `INSERT INTO ${TABLE_MONHOC} ` +
+      ` VALUES (NULL, '${subject_id}','${name}',${lession_count},${semesters});`;
     dbConnection.query(query, (error, results) => {
       if (error) {
         reject(error);
@@ -44,17 +43,15 @@ const create = (req) => {
 };
 
 const update = (req) => {
-  const { id, subject_id, name, lession_count, theory_count, practics_count } =
-    req.body;
+  const { id, subject_id, name, lession_count, semesters } = req.body;
   return new Promise((resolve, reject) => {
     if (!id) reject(null);
     const query =
       `UPDATE ${TABLE_MONHOC} ` +
       ` SET MaMH = '${subject_id}', ` +
       ` TenMonhoc = '${name}',` +
-      ` Tongsotiet = ${lession_count},` +
-      ` Tietlythuyet = ${theory_count},` +
-      ` Tietthuchanh = ${practics_count},` +
+      ` Sotinchi = ${lession_count},` +
+      ` Hocky = ${semesters},` +
       ` WHERE ID = ${id};`;
     dbConnection.query(query, (error, results) => {
       if (error) {

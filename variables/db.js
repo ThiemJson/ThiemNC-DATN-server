@@ -1,9 +1,9 @@
 module.exports = {
-  MYSQL_HOST: process.env.MYSQL_HOST || "localhost",
+  MYSQL_HOST: process.env.MYSQL_HOST || "127.0.0.1",
   MYSQL_USER_NAME: process.env.MYSQL_USER_NAME || "root",
   MYSQL_PASSWORD: process.env.MYSQL_PASSWORD || "password",
   MYSQL_PORT: process.env.MYSQL_PORT || 3306,
-  MYSQL_DATABASE_NAME: process.env.MYSQL_DATABASE_NAME || "be_express",
+  MYSQL_DATABASE_NAME: process.env.MYSQL_DATABASE_NAME || "DATN_BE_EXPRESS",
 
   // DATABASE ENTITY
   TABLE_SV: "SINHVIEN", //
