@@ -1,9 +1,12 @@
 module.exports = {
-  MYSQL_HOST: process.env.MYSQL_HOST || "localhost",
-  MYSQL_USER_NAME: process.env.MYSQL_USER_NAME || "root",
-  MYSQL_PASSWORD: process.env.MYSQL_PASSWORD || "password",
-  MYSQL_PORT: process.env.MYSQL_PORT || 3306,
-  MYSQL_DATABASE_NAME: process.env.MYSQL_DATABASE_NAME || "be_express",
+  MYSQL_HOST:
+    process.env.MYSQL_HOST || "ec2-44-206-89-185.compute-1.amazonaws.com",
+  MYSQL_USER_NAME: process.env.MYSQL_USER_NAME || "keglnydfpgmcjf",
+  MYSQL_PASSWORD:
+    process.env.MYSQL_PASSWORD ||
+    "a1559ac1e33bf6f0302519ed05e342009bf9c2ac18824f65d6408da065dff987",
+  MYSQL_PORT: process.env.MYSQL_PORT || 5432,
+  MYSQL_DATABASE_NAME: process.env.MYSQL_DATABASE_NAME || "d5je9djmm5t84l",
 
   // DATABASE ENTITY
   TABLE_SV: "SINHVIEN", //
