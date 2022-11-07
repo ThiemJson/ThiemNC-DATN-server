@@ -87,6 +87,23 @@ const remove = async (req, res) => {
     });
 };
 
+const fetAllClassWith = async (req, res) => {
+  classModel
+    .fetAllClassWith(req)
+    .then((results) => {
+      res.status(200).json({
+        status: 0,
+        data: results,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        status: -1,
+        data: null,
+      });
+    });
+};
+
 module.exports = {
   fetchAll,
   fetchById,
