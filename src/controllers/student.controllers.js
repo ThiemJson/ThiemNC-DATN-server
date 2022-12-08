@@ -36,6 +36,24 @@ const fetchById = async (req, res) => {
     });
 };
 
+// Get by id
+const fetchByMaSV = async (req, res) => {
+  studentModel
+    .getByMaSV(req)
+    .then((results) => {
+      res.status(200).json({
+        status: 0,
+        data: results,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        data: null,
+        status: -1,
+      });
+    });
+};
+
 const create = async (req, res) => {
   studentModel
     .create(req)
@@ -90,6 +108,7 @@ const remove = async (req, res) => {
 module.exports = {
   fetchAll,
   fetchById,
+  fetchByMaSV,
   create,
   update,
   remove,

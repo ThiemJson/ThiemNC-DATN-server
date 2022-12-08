@@ -1,9 +1,32 @@
+// module.exports = {
+//   MYSQL_HOST: "i0rgccmrx3at3wv3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+//   MYSQL_USER_NAME: "ux95jteadofwrw2g",
+//   MYSQL_PASSWORD: "dq7mpptppk4jo0h8",
+//   MYSQL_PORT: 3306,
+//   MYSQL_DATABASE_NAME: "tdcc7nlcrylqdfuf",
+
+//   // DATABASE ENTITY
+//   TABLE_SV: "SINHVIEN", //
+//   TABLE_KHOA: "KHOA", //
+//   TABLE_PHONGHOC: "PHONGHOC", //
+//   TABLE_CAHOC: "CAHOC", //
+//   TABLE_GV: "GIANGVIEN", //
+//   TABLE_MONHOC: "MONHOC", //
+//   TABLE_LOPMONHOC: "LOPMONHOC", //
+//   TABLE_GV_DIEMDANH_SV: "GV_DIEMDANH_SV", //
+//   TABLE_MONHOC_LOPMONHOC: "MONHOC_LOPMONHOC", //
+//   TABLE_CA_PHONG_LOPMONHOC: "CA_PHONG_LOPMONHOC",
+//   TABLE_CHITIETDD: "CHITIETDD", //
+//   TABLE_SINHVIEN_HOC_LOPMONHOC: "SINHVIEN_HOC_LOPMONHOC", //
+//   TABLE_THONGBAO: "THONGBAO", //
+// };
+
 module.exports = {
-  MYSQL_HOST: "i0rgccmrx3at3wv3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  MYSQL_USER_NAME: "ux95jteadofwrw2g",
-  MYSQL_PASSWORD: "dq7mpptppk4jo0h8",
+  MYSQL_HOST: "localhost",
+  MYSQL_USER_NAME: "root",
+  MYSQL_PASSWORD: "password",
   MYSQL_PORT: 3306,
-  MYSQL_DATABASE_NAME: "tdcc7nlcrylqdfuf",
+  MYSQL_DATABASE_NAME: "DATN_BE_EXPRESS",
 
   // DATABASE ENTITY
   TABLE_SV: "SINHVIEN", //

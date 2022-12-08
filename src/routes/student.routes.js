@@ -4,6 +4,7 @@ const studentsController = require("../controllers/student.controllers");
 
 studentRoutes.get("/students/", studentsController.fetchAll);
 studentRoutes.get("/students/:id", studentsController.fetchById);
+studentRoutes.get("/students/msv/:id", studentsController.fetchByMaSV);
 studentRoutes.delete("/students/", studentsController.remove);
 studentRoutes.post("/students/", studentsController.create);
 studentRoutes.put("/students/", studentsController.update);
