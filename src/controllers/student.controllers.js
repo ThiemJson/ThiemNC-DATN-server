@@ -54,6 +54,23 @@ const fetchByMaSV = async (req, res) => {
     });
 };
 
+const fetchByDeviceCode = async (req, res) => {
+  studentModel
+    .getByDeviceCode(req)
+    .then((results) => {
+      res.status(200).json({
+        status: 0,
+        data: results,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        data: null,
+        status: -1,
+      });
+    });
+};
+
 const create = async (req, res) => {
   studentModel
     .create(req)
@@ -109,6 +126,7 @@ module.exports = {
   fetchAll,
   fetchById,
   fetchByMaSV,
+  fetchByDeviceCode,
   create,
   update,
   remove,

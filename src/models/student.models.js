@@ -41,6 +41,20 @@ const getByMaSV = (req) => {
   });
 };
 
+const getByDeviceCode = (req) => {
+  return new Promise((resolve, reject) => {
+    const id = req.params.id;
+    if (!id) reject(null);
+    const query = `SELECT * ` + ` FROM ${TABLE_SV} ` + `WHERE MaThietbi=${id}`;
+    dbConnection.query(query, (error, results) => {
+      if (error) {
+        reject(error);
+      }
+      resolve(results);
+    });
+  });
+};
+
 const create = (req) => {
   return new Promise((resolve, reject) => {
     const {
@@ -65,30 +79,24 @@ const create = (req) => {
 };
 
 const update = (req) => {
-  const {
-    id,
-    student_id,
-    name,
-    date_of_birth,
-    gender,
-    device_id,
-    fcm_id,
-    password,
-  } = req.body;
+  console.log("update", req.body);
+
+  const { ID, MaSV, Hoten, Gioitinh, MaThietbi, MaFCM, Matkhau } = req.body;
   return new Promise((resolve, reject) => {
-    if (!id) reject(null);
-    const query =
-      `UPDATE ${TABLE_SV} ` +
-      ` SET MaSV = '${student_id}', ` +
-      ` Hoten = '${name}',` +
-      ` Ngaysinh = '${date_of_birth}',` +
-      ` Gioitinh = '${gender}',` +
-      ` MaThietbi = '${device_id}',` +
-      ` MaFCM = '${fcm_id}',` +
-      ` Matkhau = '${password}'` +
-      ` WHERE ID = ${id};`;
+    if (!ID) reject(null);
+    let query =
+      `UPDATE ${TABLE_SV} SET ` +
+      (MaSV ? `MaSV = '${MaSV}' ` : "") +
+      (Hoten ? ` , Hoten = '${Hoten}' ` : "") +
+      (Gioitinh ? ` , Gioitinh = '${Gioitinh}'` : "") +
+      (MaThietbi ? ` , MaThietbi = '${MaThietbi}'` : "") +
+      (MaFCM ? ` , MaFCM = '${MaFCM}'` : "") +
+      (Matkhau ? ` , Matkhau = '${Matkhau}'` : "") +
+      ` WHERE ID = ${ID};`;
+
     dbConnection.query(query, (error, results) => {
       if (error) {
+        console.log(error);
         reject(error);
       }
       resolve(results);
@@ -114,6 +122,7 @@ module.exports = {
   getAll,
   getByID,
   getByMaSV,
+  getByDeviceCode,
   create,
   update,
   remove,
